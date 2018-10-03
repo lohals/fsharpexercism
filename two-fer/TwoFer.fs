@@ -2,5 +2,5 @@
 
 let twoFer (input: string option): string = 
     match input with
-        | _ when input.IsNone -> "One for you, one for me."
-        | _ -> sprintf "One for %s, one for me." input.Value
+        | None -> "One for you, one for me."
+        | Some name -> sprintf "One for %s, one for me." name
