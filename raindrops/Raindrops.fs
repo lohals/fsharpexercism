@@ -1,20 +1,22 @@
 ﻿module Raindrops
 
 let vocabulary = [
-    (3,"Pling");
-    (5,"Plang");
+    (3,"Pling")
+    (5,"Plang")
     (7,"Plong")
     ]
+
 let hasFactor factor number = (number % factor = 0)
 
-let convertToKnownString (factor, output) number = 
-    if hasFactor factor number 
-    then output 
-    else ""
 
-let convert (number: int): string = 
+let convert (number: int): string =
+ 
+    let convertToKnownString number (factor, output)  = 
+        if hasFactor factor number 
+        then output 
+        else ""
     vocabulary
-    |> List.map (fun vocab -> convertToKnownString vocab number)
+    |> List.map (convertToKnownString number)
     |> List.reduce (+) 
     |> function
         | "" -> number.ToString()
